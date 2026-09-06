@@ -1,13 +1,19 @@
 from dataclasses import dataclass
+import re
+
+def validar_cedula(valor: str) -> bool:
+    return bool(re.match(r'^\d-\d{4}-\d{4}$', valor))
 
 @dataclass(frozen=True)
 class Cedula:
-    pass
+    valor: str
 
 @dataclass(frozen=True)
 class Receta:
-    pass
+    cedula: Cedula
 
 @dataclass(frozen=True)
 class Despacho:
-    pass
+    folio: str
+    cadena: str
+    vence: str
