@@ -17,14 +17,13 @@ Carné:2025137295
 ## Etapa 0 — Diagnóstico
 
 **Predicción:**
-Pienso que el código está hecho para que todo esté mal a propósito
-
+Pienso que el código está hecho para que todo esté mal a propósito 
 **Observación:**
-
 El código tenía muchas cosas mal.
 
 **Explicación:**
-El archivo está diseñado para violar los 11 principios que aparecen en el documento de diagnostico.
+El archivo está diseñado para violar los 11 principios que aparecen en el documento de diagnostico, como por ejemplo se ve en clinicasegura/legado.py:50 con esa ruta mala
+.
 
 **Sello:**
 3a50e5af3dd2ffdc
@@ -68,9 +67,10 @@ Como ya identifiqué que el JSON del proveedor se filtra por todo el sistema, pr
 Al buscar manualmente las palabras full_name y risk_lvl en el código, veo que el modelo del proveedor está contaminandolo todo. Al terminar la etapa, esto no debería ocurrir.
 
 **Explicación:**
-Al usar la clase Protocol y nombrar los métodos por su propósito de negocio (enviar en lugar de post), se logra que el dominio hable de Despachos y no de diccionarios de red.
+Al usar la clase Protocol y nombrar los métodos por su propósito de negocio (enviar en lugar de post), se logra que el dominio hable de Despachos y no de diccionarios de red. Esto se puede ver en clinicasegura/dominio/puertos.py:4
 
 **Sello:**
+3c01ee4d93d4d2a4
 
 ## Etapa 4 — Flexibilidad, obsolescencia y portabilidad
 
@@ -108,7 +108,7 @@ Al ver que el segundo comando le agrega una bandera -O, pienso que el programa i
 Al correr los comandos en mi consola, el programa reventó desde el inicio por el viejo problema de la ruta en /tmp/. Sin embargo, al investigar qué hace realmente la bandera -O en Python, aprendí que borra todas las líneas que digan assert. Fui a revisar el archivo viejo y vi que usaba assert para validar las recetas, lo que significa que el programa habría dejado pasar datos maliciosos silenciosamente
 
 **Explicación:**
-Para evitar que las reglas se borren en producción, usé la librería pydantic en el nuevo archivo clinicasegura/aplicacion/borde.py. Esta herramienta obliga a validar los datos usando reglas estrictas, como decirle que el valor debe ser mayor a cero. De esta forma, si entran datos sucios, se lanza un error real y no un assert, por lo que nunca se podrá ignorar
+Para evitar que las reglas se borren en producción, usé la librería pydantic en el nuevo archivo clinicasegura/aplicacion/borde.py. Esta herramienta obliga a validar los datos usando reglas estrictas, como decirle que el valor debe ser mayor a cero. De esta forma, si entran datos sucios, se lanza un error real y no un assert, por lo que nunca se podrá ignorar. Esto se puede ver en clinicasegura/aplicacion/borde.py:6
 
 **Sello:**
 66fab1f8eb594793
