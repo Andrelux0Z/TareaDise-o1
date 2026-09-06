@@ -89,15 +89,15 @@ Apliqué el principio de Diseñar para la flexibilidad al crear el archivo clini
 ## Etapa 5 — Testabilidad
 
 **Predicción:**
-
+Predigo que va a fallar inmediatamente porque intentará crear una base de datos real en mi disco duro usando rutas que no existen, demostrando que es imposible probarlo de forma aislada.
 **Observación:**
-
-```
-```
+Al intentar ejecutar el código legado en la consola falló de inmediato y nisiquiera corrió. Lanzó un error porque intentó crear una base de datos real en la carpeta de Linux /tmp/. Contando los problemas, para probar una simple regla matemática me obliga a cambiar cosas del mundo real, necesito un disco duro con permisos específicos, una conexión a internet real, un reloj físico que avance y un generador de azar.
 
 **Explicación:**
+ara solucionar esto, modifiqué clinicasegura/dominio/servicio.py:6 para que el programa ya no intente conectarse a la base de datos ni pedir la hora por su cuenta. En lugar de eso, ahora recibe todo eso (el reloj, la bitácora, etc.) como parámetros en el __init__. Al pasárselos desde afuera cuando se hacen pruebas se puede poner un reloj falso y no se necesita internet.
 
 **Sello:**
+8bdfc30efaaa7481
 
 ## Etapa 6 — Diseño defensivo
 

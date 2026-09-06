@@ -1,3 +1,4 @@
+from datetime import timedelta
 from clinicasegura.dominio.modelos import Receta, Despacho
 from clinicasegura.dominio.errores import CadenaNoSoportada
 
@@ -13,5 +14,7 @@ class EmisionDeRecetas:
         if not pasarela:
             raise CadenaNoSoportada()
         folio = self.folios.siguiente()
-        vence = self.reloj.ahora()
-        return pasarela.enviar(receta, folio, vence)
+        vence = self.reloj.ahora() + timedelta(days=receta.dias)
+        despacho = pasarela.enviar(receta, folio, vence)
+        self.bitacora.registrar('emitida', folio)
+        return despacho
