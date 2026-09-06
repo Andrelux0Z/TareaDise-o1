@@ -48,15 +48,16 @@ d798cb0d969441e2
 ## Etapa 2 — Reducir el acoplamiento
 
 **Predicción:**
+Como ya había visto en mi diagnóstico que el diccionario global CONFIG daba problemas, creo que la solución será sacar la fórmula del dinero a una función nueva, y dejar de usar diccionarios sueltos para pasar la información de la receta.
 
 **Observación:**
-
-```
-```
+Al hacer el experimento y cambiarle los días a la variable CONFIG desde la consola, vi que el sistema cambiaba las fechas de vencimiento de la nada. Esto pasa porque todo el código está leyendo ese diccionario a escondidas
 
 **Explicación:**
+Para quitar ese acoplamiento, creé la función calcular_recargo en mi nuevo archivo clinicasegura/dominio/reglas.py:3. Esto lo arregla porque la función ahora solo pide 3 datos simples para hacer su trabajo y ya no tiene que andar leyendo cosas de afuera ni diccionarios globales.
 
 **Sello:**
+8e5c2ce60d38b4de
 
 ## Etapa 3 — Abstracción y reuso
 
