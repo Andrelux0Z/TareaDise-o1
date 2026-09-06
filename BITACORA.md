@@ -119,5 +119,7 @@ Nombre dos principios que se estorbaron entre sí en SU rediseño, y con qué
 criterio resolvió el conflicto. Cite el archivo donde se ve la decisión.
 
 **Conflicto 1:**
+En la Etapa 3 habría sido más directo reusar el diccionario JSON proporcionado por la red (Principio 6). Sin embargo, se optó por crear la clase "Despacho" desde cero, ya que al reusar el diccionario se rompía la Abstracción (Principio 4) y la estructura del proveedor terminaba contaminando la lógica de negocio. Se priorizó mantener una abstracción limpia por encima del reuso. Esta decisión se observa en "clinicasegura/dominio/puertos.py".
 
 **Conflicto 2:**
+En la Etapa 6 se introdujo la librería externa Pydantic. Agregar dependencias de terceros siempre aumenta el riesgo de Obsolescencia (Principio 8) en caso de que el proyecto sea abandonado. No obstante, resultaba contraproducente desarrollar un motor de validación desde cero en lugar de reusar una herramienta robusta ya existente (Principio 6). Se priorizó el reuso para evitar reinventar la rueda, mitigando el riesgo mediante la documentación de una ruta de salida en DEPENDENCIAS.md.
