@@ -1,7 +1,7 @@
 # Bitácora de la práctica
 
-Estudiante:
-Carné:
+Estudiante:Andrés Gabriel Padilla Robles
+Carné:2025137295
 
 > Cómo se llena cada entrada, en este orden y sin saltarse pasos:
 >
@@ -17,15 +17,17 @@ Carné:
 ## Etapa 0 — Diagnóstico
 
 **Predicción:**
+Pienso que el código está hecho para que todo esté mal a propósito
 
 **Observación:**
 
-```
-```
+El código tenía muchas cosas mal.
 
 **Explicación:**
+El archivo está diseñado para violar los 11 principios que aparecen en el documento de diagnostico.
 
 **Sello:**
+3a50e5af3dd2ffdc
 
 ## Etapa 1 — Dividir y conquistar, cohesión
 
