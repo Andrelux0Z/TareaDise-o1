@@ -32,15 +32,18 @@ El archivo está diseñado para violar los 11 principios que aparecen en el docu
 ## Etapa 1 — Dividir y conquistar, cohesión
 
 **Predicción:**
+No entiendo qué predecir si ya leí el código en el étapa 0 y ya hice el diagnóstico.
+El archivo legado mezcla 6 responsabilidades (HTTP, BD, Reglas, Validar cédula, Configuración y Registro).
+Pienso que deberían haber 6 archivos, uno por cada cosa que hace el programa.
 
 **Observación:**
-
-```
-```
+Creé las carpetas dominio, aplicación e infraestructura, junto con los modelos base congelados y las clases de errores. El marcador pasó a verde
 
 **Explicación:**
+Apliqué el principio de cohesión y el de dividir y conquistar. Por ejemplo, mi archivo clinicasegura/dominio/modelos.py:3 ahora tiene una sola responsabilidad (definir los datos abstractos congelados como Cedula), desligándolo por completo del resto de las operaciones web o de base de datos.
 
 **Sello:**
+d798cb0d969441e2
 
 ## Etapa 2 — Reducir el acoplamiento
 
