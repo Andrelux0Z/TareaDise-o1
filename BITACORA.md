@@ -62,28 +62,29 @@ Para quitar ese acoplamiento, creé la función calcular_recargo en mi nuevo arc
 ## Etapa 3 — Abstracción y reuso
 
 **Predicción:**
+Como ya identifiqué que el JSON del proveedor se filtra por todo el sistema, predigo que al construir una interfaz limpia, esas llaves feas del JSON desaparecerán por completo de la lógica de negocio y quedarán encerradas en la infraestructura
 
 **Observación:**
-
-```
-```
+Al buscar manualmente las palabras full_name y risk_lvl en el código, veo que el modelo del proveedor está contaminandolo todo. Al terminar la etapa, esto no debería ocurrir.
 
 **Explicación:**
+Al usar la clase Protocol y nombrar los métodos por su propósito de negocio (enviar en lugar de post), se logra que el dominio hable de Despachos y no de diccionarios de red.
 
 **Sello:**
 
 ## Etapa 4 — Flexibilidad, obsolescencia y portabilidad
 
 **Predicción:**
+Dado que el código viejo usa puros condicionales if/elif para decidir a qué farmacia enviar la receta, predigo que cuando la prueba intente usar la cadena "FarmaViva" el sistema va a fallar.
 
 **Observación:**
-
-```
-```
+Al correr la prueba, vi que efectivamente el sistema colapsó porque el orquestador principal no estaba preparado para recibir un nombre de farmacia nuevo.
 
 **Explicación:**
+Apliqué el principio de Diseñar para la flexibilidad al crear el archivo clinicasegura/infraestructura/registro.py para construir un diccionario de pasarelas, y actualicé servicio.py:12 para que busque en ese diccionario en vez de usar if/elif. Entonces si después llega una farmacia nueva, solo hay que agregar un archivo en infraestructura sin tocar la clase principal.
 
 **Sello:**
+721e8c4faf88cdcd
 
 ## Etapa 5 — Testabilidad
 

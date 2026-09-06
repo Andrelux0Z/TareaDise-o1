@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 import re
+from decimal import Decimal
 
 def validar_cedula(valor: str) -> bool:
     return bool(re.match(r'^\d-\d{4}-\d{4}$', valor))
@@ -11,6 +12,9 @@ class Cedula:
 @dataclass(frozen=True)
 class Receta:
     cedula: Cedula
+    medicamento: str
+    dias: int
+    dosis_mg: Decimal
 
 @dataclass(frozen=True)
 class Despacho:
