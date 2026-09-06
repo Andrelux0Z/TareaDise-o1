@@ -102,15 +102,16 @@ ara solucionar esto, modifiqué clinicasegura/dominio/servicio.py:6 para que el 
 ## Etapa 6 — Diseño defensivo
 
 **Predicción:**
+Al ver que el segundo comando le agrega una bandera -O, pienso que el programa intentará correr más rápido y quizá se salte validaciones de seguridad o ignore errores para no detenerse
 
 **Observación:**
-
-```
-```
+Al correr los comandos en mi consola, el programa reventó desde el inicio por el viejo problema de la ruta en /tmp/. Sin embargo, al investigar qué hace realmente la bandera -O en Python, aprendí que borra todas las líneas que digan assert. Fui a revisar el archivo viejo y vi que usaba assert para validar las recetas, lo que significa que el programa habría dejado pasar datos maliciosos silenciosamente
 
 **Explicación:**
+Para evitar que las reglas se borren en producción, usé la librería pydantic en el nuevo archivo clinicasegura/aplicacion/borde.py. Esta herramienta obliga a validar los datos usando reglas estrictas, como decirle que el valor debe ser mayor a cero. De esta forma, si entran datos sucios, se lanza un error real y no un assert, por lo que nunca se podrá ignorar
 
 **Sello:**
+66fab1f8eb594793
 
 ## Cierre — Los principios en conflicto
 
